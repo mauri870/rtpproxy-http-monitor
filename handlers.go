@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"net"
 	"net/http"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	log "github.com/sirupsen/logrus"
 )
 
 // AppHandler contains the route handlers for the application
@@ -49,7 +49,9 @@ func (app *AppHandler) health() http.Handler {
 			return
 		}
 
-		log.Println(string(buf))
-
+		if !bytes.HasPrefix(buf, []byte("TOKEN")) {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 	})
 }
