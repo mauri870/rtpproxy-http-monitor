@@ -35,6 +35,7 @@ func (app *AppHandler) health() http.Handler {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		defer conn.Close()
 
 		_, err = conn.Write([]byte("TOKEN V"))
 		if err != nil {
