@@ -23,7 +23,7 @@ func (app *AppHandler) Serve(addr string) error {
 	r.Use(handlers.CORS(handlers.AllowedOrigins([]string{"*"})))
 
 	// Health Check endpoint
-	r.Handle("/health", app.health()).Methods("GET")
+	r.Handle("/health", app.health()).Methods("GET", "HEAD")
 
 	return http.ListenAndServe(addr, r)
 }
