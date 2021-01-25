@@ -10,12 +10,10 @@
 ### END INIT INFO
 case "$1" in
   start)
-    while true; do
-          /usr/local/bin/rtpproxy-http-monitor -addr "0.0.0.0:8080" >> /var/log/rtpproxyhttpmonitor.log 2>&1
-    done &
+    /usr/local/bin/rtpproxy-http-monitor -addr "0.0.0.0:8080" >> /var/log/rtpproxyhttpmonitor.log 2>&1 &
     ;;
   stop)
-    kill -9 $(pgrep -f rtpproxy-http-monitor)
+    pkill -f /usr/local/bin/rtpproxy-http-monitor
     ;;
   *)
     echo "Usage: $0 {start|stop}"
