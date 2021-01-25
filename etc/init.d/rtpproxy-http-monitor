@@ -1,0 +1,24 @@
+#! /bin/bash
+### BEGIN INIT INFO
+# Provides:          rtpproxy-http-monitor
+# Required-Start:
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Starts rtpproxy-http-monitor health check HTTP server
+# Description:
+### END INIT INFO
+case "$1" in
+  start)
+    while true; do
+          /usr/local/bin/rtpproxy-http-monitor -addr "0.0.0.0:8080" >> /var/log/rtpproxyhttpmonitor.log 2>&1
+    done &
+    ;;
+  stop)
+    killall rtpproxy-http-monitor
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+esac

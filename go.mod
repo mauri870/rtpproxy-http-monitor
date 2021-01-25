@@ -1,4 +1,4 @@
-module github.com/mauri870/rtpproxyhttpmonitor
+module github.com/mauri870/rtpproxy-http-monitor
 
 go 1.15
 

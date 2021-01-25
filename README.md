@@ -8,11 +8,20 @@ This project was intended to be used as a simple health endpoint for private and
 ## Build
 
 ```
-go build
+make
+make install
 ```
 
 ## Usage
 
 ```
-./rtpproxyhttpmonitor -addr :8080 -rtpproxy 127.0.0.1:7722
+./rtpproxy-http-monitor -addr :8080 -rtpproxy 127.0.0.1:7722
+```
+
+## Init.d service
+
+An init.d service is available at etc/init.d/rtpproxy-http-monitor.
+
+```bash
+make init-d
 ```
