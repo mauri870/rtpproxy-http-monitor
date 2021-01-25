@@ -15,7 +15,7 @@ case "$1" in
     done &
     ;;
   stop)
-    killall rtpproxy-http-monitor
+    kill -9 $(pgrep -f rtpproxy-http-monitor)
     ;;
   *)
     echo "Usage: $0 {start|stop}"
